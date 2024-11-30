@@ -7,11 +7,11 @@ import time
 import schedule
 
 # Environment variables
-EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')  # Email address for notifications
-EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD')  # App password for Gmail SMTP
-INSTANCE_ID = os.environ.get('INSTANCE_ID')  # EC2 instance ID to be managed
-HOSTNAME = os.environ.get('EC2_HOSTNAME')  # Public or private IP of the EC2 instance
-SSH_KEY_PATH = os.environ.get('SSH_KEY_PATH')  # Path to the private SSH key for EC2 access
+EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
+EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+INSTANCE_ID = os.environ.get('INSTANCE_ID')
+HOSTNAME = os.environ.get('EC2_HOSTNAME')
+SSH_KEY_PATH = os.environ.get('SSH_KEY_PATH')
 
 # Initialize AWS EC2 client
 ec2_client = boto3.client('ec2', region_name="us-east-1")  # Adjust region as needed
@@ -19,7 +19,6 @@ ec2_client = boto3.client('ec2', region_name="us-east-1")  # Adjust region as ne
 # Restarts the EC2 instance and ensures it is running before restarting the Docker container
 def restart_server_and_container():
     print('Rebooting the EC2 instance...')
-    print(ec2_client.describe_instance_status(InstanceIds=[INSTANCE_ID]))  # Log current instance status
     ec2_client.reboot_instances(InstanceIds=[INSTANCE_ID])  # Reboot the instance
 
     # Wait for the instance to transition to 'running' state
@@ -44,11 +43,11 @@ def restart_container():
     print(stdout.readlines())  # Print command output for debugging
     ssh.close()
 
-# Sends a notification email via Gmail SMTP when the application goes down
+# Send a notification email via Gmail SMTP when the application goes down
 def send_notification(email_msg):
     print('Sending notification email...')
     with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
-        smtp.starttls()  # Secure the connection
+        smtp.starttls()
         smtp.ehlo()
         smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
         message = f"Subject: SITE DOWN\n\n{email_msg}"
