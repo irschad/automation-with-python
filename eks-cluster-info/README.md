@@ -31,15 +31,11 @@ To run this project, ensure you have the following:
    ```
 
 ## Usage
-1. Open the `eks-cluster-status-check.py` file and update the `region_name` parameter with your desired AWS region:
-   ```python
-   client = boto3.client('eks', region_name="us-east-1")
-   ```
-2. Run the script using Python:
+1. Run the script using Python:
    ```bash
    python eks-cluster-status-check.py
    ```
-3. The script will output details about all the EKS clusters in the specified region, including their:
+2. The script will output details about all the EKS clusters in the specified region, including their:
    - Status
    - Endpoint
    - Version
