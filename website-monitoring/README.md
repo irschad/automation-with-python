@@ -54,7 +54,7 @@ sudo docker run -d -p 8080:80 your-web-app-image
 ```
 
 #### Python Script Breakdown
-1. Imports and Environment Setup
+1. **Imports and Environment Setup**
   ```python
   import boto3
   import requests
@@ -73,14 +73,13 @@ sudo docker run -d -p 8080:80 your-web-app-image
   - time: For adding delays during instance monitoring and recovery.
   - schedule: To schedule the monitoring task to run periodically.
 
-2. AWS EC2 Client Initialization
+2. **AWS EC2 Client Initialization**
    ```python
    ec2_client = boto3.client('ec2', region_name="us-east-1")
    ```
    - This initializes the AWS EC2 client to interact with the EC2 instance and manage its lifecycle (e.g., reboot).
 
-4. Restart EC2 and Docker Container
-
+3. **Restart EC2 and Docker Container**
    ```python
    def restart_server_and_container():
     print('Rebooting the EC2 instance...')
@@ -99,7 +98,7 @@ sudo docker run -d -p 8080:80 your-web-app-image
     ```
     - Reboots the EC2 instance and waits until the instance is back in the "running" state before restarting the Docker container.
     
-6. Restart Docker Container
+4. **Restart Docker Container**
    ```python
    def restart_container():
     print('Restarting the application container...')
@@ -112,7 +111,7 @@ sudo docker run -d -p 8080:80 your-web-app-image
    ```
    - Connects to the EC2 instance via SSH and restarts the Docker container using the provided container ID.
    
-8. Send Email Notification
+5. **Send Email Notification**
    ```python
    def send_notification(email_msg):
     print('Sending notification email...')
@@ -125,7 +124,7 @@ sudo docker run -d -p 8080:80 your-web-app-image
    ```
    - Sends an email via Gmail's SMTP server notifying about the downtime of the application.
 
-10. Monitor website and recover, if needed
+6. **Monitor website and recover, if needed**
     ```python
     def monitor_application():
     try:
@@ -148,7 +147,7 @@ sudo docker run -d -p 8080:80 your-web-app-image
     - If the site is down (status code not 200), it restarts the container and sends an email notification.
     - If an error occurs (e.g., no response from the website), it restarts the EC2 instance and the Docker container.
         
-12. Schedule the monitoring task
+7. **Schedule the monitoring task**
     '''python
     schedule.every(5).minutes.do(monitor_application)
 
