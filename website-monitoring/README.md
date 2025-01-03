@@ -7,7 +7,7 @@ This project automates the monitoring and recovery of a website hosted on an EC2
 ## Technologies
 
 - **Python**: For writing the monitoring and recovery logic.
-- **AWS EC2**: For hosting the web application and running the Docker container.
+- **Amazon EC2**: For hosting the web application and running the Docker container.
 - **Docker**: For containerizing the web application.
 - **Linux**: EC2 instance runs Ubuntu (or any other distribution), and the monitoring script is executed within it.
 
@@ -22,7 +22,7 @@ This project automates the monitoring and recovery of a website hosted on an EC2
 
 ### 1. Prerequisites
 
-- An **AWS EC2** instance running a Linux distribution (Ubuntu is assumed).
+- An **EC2** instance running a Linux distribution (Ubuntu is assumed).
 - **Docker** installed on the EC2 instance.
 - A web application running inside a Docker container.
 - Python 3.x installed.
@@ -73,7 +73,7 @@ sudo docker run -d -p 8080:80 your-web-app-image
   - time: For adding delays during instance monitoring and recovery.
   - schedule: To schedule the monitoring task to run periodically.
 
-2. **AWS EC2 Client Initialization**
+2. **EC2 Client Initialization**
    ```python
    ec2_client = boto3.client('ec2', region_name="us-east-1")
    ```
