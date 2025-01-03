@@ -22,7 +22,7 @@ This project automates the management of AWS EC2 EBS volumes using Python and th
   ```
 
 ## Scripts
-1. volume-backups.py
+1. **volume-backups.py**:
 This script automatically creates snapshots for all EC2 volumes tagged with Environment: dev. It is intended to create backups of volumes on a regular basis.
 
 ```python
@@ -73,7 +73,7 @@ The schedule library runs the snapshot creation function periodically.
 The boto3.client is used to interact with AWS EC2, and describe_volumes fetches the list of volumes.
 
 
-2. cleanup-snapshots.py
+2. **cleanup-snapshots.py**:
 This script cleans up old EC2 snapshots by retaining only the most recent snapshots for each volume. It is useful for managing snapshot retention.
 
 ```python
@@ -115,7 +115,7 @@ This script lists all snapshots for volumes tagged with Environment: dev and sor
 It keeps only the most recent two snapshots and deletes older ones.
 
 
-3. restore-volume.py
+3. **restore-volume.py**:
 This script restores a volume from the latest snapshot of a given EC2 instance. It creates a new volume from the most recent snapshot and attaches it to the instance.
 
 ```python
