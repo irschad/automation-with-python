@@ -148,9 +148,9 @@ sudo docker run -d -p 8080:80 your-web-app-image
     - If an error occurs (e.g., no response from the website), it restarts the EC2 instance and the Docker container.
         
 7. **Schedule the monitoring task**
-    '''python
+    ```python
     schedule.every(5).minutes.do(monitor_application)
-
+    
     while True:
         schedule.run_pending()
         time.sleep(1)
