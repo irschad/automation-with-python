@@ -65,13 +65,13 @@ sudo docker run -d -p 8080:80 your-web-app-image
   import schedule
   ```
 
-  - boto3: AWS SDK for Python, used to interact with EC2.
-  - requests: Used to send HTTP requests to check if the website is reachable.
-  - smtplib: Used for sending email notifications when the website is down.
-  - paramiko: Used for SSH connections to the EC2 instance to restart Docker containers.
-  - os: Access environment variables (e.g., email credentials, instance ID).
-  - time: For adding delays during instance monitoring and recovery.
-  - schedule: To schedule the monitoring task to run periodically.
+  - **boto3**: AWS SDK for Python, used to interact with EC2.
+  - **requests**: Used to send HTTP requests to check if the website is reachable.
+  - **smtplib**: Used for sending email notifications when the website is down.
+  - **paramiko**: Used for SSH connections to the EC2 instance to restart Docker containers.
+  - **os**: Access environment variables (e.g., email credentials, instance ID).
+  - **time**: For adding delays during instance monitoring and recovery.
+  - **schedule**: To schedule the monitoring task to run periodically.
 
 2. **EC2 Client Initialization**
    ```python
